@@ -1,0 +1,19 @@
+[project]
+name = "crowdin-desktop"
+version = "0.1.0"
+description = "接入GPT的 Crowdin 桌面端，使用 PyQt 开发"
+authors = [
+    {name = "YunShu", email = "im@yunshu.site"},
+]
+dependencies = []
+requires-python = ">=3.11, <3.12"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[tool.pdm]
+distribution = true

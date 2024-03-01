@@ -4,7 +4,7 @@
 
 首先按照 [pdm](https://pdm-project.org/latest/)
 
-一般情况下直接使用pip或者pipx按照即可：
+一般情况下直接使用pip或者pipx安装即可：
 
 ```bash
 pip install pdm

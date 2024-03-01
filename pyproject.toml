@@ -7,10 +7,9 @@ authors = [
 ]
 dependencies = [
     "pyside6>=6.6.2",
-    "pyinstaller>=6.4.0",
     "openai>=1.12.0",
     "crowdin-api-client>=1.14.1",
-    "python-dotenv>=1.0.1",
+    "nuitka>=2.0.5",
 ]
 requires-python = ">=3.11, <3.12"
 readme = "README.md"
@@ -21,7 +20,18 @@ _.env_file = ".env"
 # 运行项目
 dev = {call = "crowdin_desktop:main"}
 # 打包项目
-pack = {cmd = "pyinstaller -F -w app.py"}
+pack = {cmd = [
+    "nuitka3",
+    "--onefile", # 生成单个可执行文件
+    "--standalone", # 生成独立可执行文件
+    "--output-dir=output", # 输出目录
+    "--windows-disable-console", # 没有CMD控制窗口
+    "--plugin-enable=pyside6", # 启用PySide6插件
+    "--include-qt-plugins=qml", # 包含Qt QML插件
+    "--static-libpython=yes", # 静态链接Python库
+    "--include-data-dir=crowdin_desktop/ui=crowdin_desktop/ui", # 包含资源文件
+    "app.py",
+]}
 
 [tool.pdm.dev-dependencies]
 dev = [
